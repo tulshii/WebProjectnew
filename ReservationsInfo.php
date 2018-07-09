@@ -1,6 +1,39 @@
+<?php
+	
+	include('insertregister.php');
+$mysqli = new mysqli ("localhost", "root","" ,"cafeteria");
+
+if ($mysqli==false){
+	die ("ERROR: Could not connect." . $mysql->connect_error);
+
+}
+echo " connected successfully. Host info:". $mysqli->host_info;
+//
+	if(isset($_POST['submit'])){
+			$name = $_POST["name"];
+			$email = $_POST["name"];
+			 $dateJoined = $_POST["date"];
+			  $peopleNo = $_POST["peopleNo"];
+			  $special = $_POST["special"];
+	}
+
+	$sql = "INSERT INTO resertvation (name, email,date, peopleNo,preference)
+		VALUES ('$name','$email','$dateJoined','$peopleNo',' $special ')";
+		if ($mysqli->query($sql) ===true) {
+	echo "data inserted";
+} else {
+	echo "insertion unsuccessful";
+}
+
+$mysqli -> close ();
+
+
+?>
+
 <!DOCTYPE html>
 
 <html>
+
 <body>
 
 The following are your Reservations info:<br>
@@ -16,10 +49,8 @@ DATE:<br>
 NO OF PEOPLE:<br> 
 <?php echo $_POST["peopleNo"]; ?><br>
 
-ROOM PREFERENCE:<br> 
-<?php echo $_POST["preference"]; ?><br>
-
 SPECIAL OCCASSION:<br> <?php echo $_POST["special"];?><br>
 
+<a href="HomePage.php">Back Home</a>
 </body>
 </html>
