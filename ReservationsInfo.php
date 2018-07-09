@@ -1,7 +1,7 @@
 <?php
 	
 	include('insertregister.php');
-$mysqli = new mysqli ("localhost", "root","" ,"cafeteria");
+$mysqli = new mysqli ("localhost", "","" ,"cafeteria");
 
 if ($mysqli==false){
 	die ("ERROR: Could not connect." . $mysql->connect_error);
